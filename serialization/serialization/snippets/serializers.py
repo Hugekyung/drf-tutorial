@@ -5,17 +5,17 @@ from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
+    owner = serializers.ReadOnlyField(source='owner.username') # ReadOnlyField는 항상 읽기전용, CharField(read_only=True)로 설정한 것과 동일하다.
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'snippets']
+        fields = ['id', 'username', 'snippets', 'owner']
 
 
-
-# class SnippetSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Snippet
-#         fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
+class SnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snippet
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
 
 # class SnippetSerializer(serializers.Serializer):
 #     id = serializers.IntegerField(read_only=True)

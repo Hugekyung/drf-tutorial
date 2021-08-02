@@ -20,3 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('snippets.urls')),
 ]
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')), # 로그인/로그아웃 기능
+]

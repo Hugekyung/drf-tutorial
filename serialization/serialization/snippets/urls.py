@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from snippets import views_fbv, views_cbv, views
+from snippets import views_cbv, views
 
 
 urlpatterns = [
