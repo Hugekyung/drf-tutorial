@@ -7,12 +7,14 @@
 - 하지만 편하게 읽을 수 있고 구현하기도 쉽다"""
 
 # drf에서는 status 기능을 통해 http 상태를 숫자+문자 로 표현해 보다 명확한 상태를 보여준다.
+
 from rest_framework import status
+from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
-
 
 @api_view(['GET', 'POST'])
 def snippet_list(request, format=None): # format=None: 데이터 형태에 대한 포맷정보가 붙는다.
